@@ -8,6 +8,11 @@ GET     /inner                      controllers.Application.inner
 
 # API
 GET     /users/:user_id             controllers.JsonAPI.user(user_id: Int)
+OPTIONS /cors_users                 controllers.JsonAPI.optionsPOST
+OPTIONS /cors_users/:user_id        controllers.JsonAPI.options(user_id: Int)
+GET     /cors_users/:user_id        controllers.JsonAPI.getUser(user_id: Int)
+POST    /cors_users                 controllers.JsonAPI.postUser
+PUT     /cors_users/:user_id        controllers.JsonAPI.putUser(user_id: Int)
 
 # SOP test
 GET     /sop/outer                  controllers.SOP.outer
@@ -27,6 +32,11 @@ GET     /postmessage/inner_call_api controllers.PostMessage.innerCallAPI
 
 # JSONP test
 GET     /jsonp/call_api             controllers.JSONP.callAPI
+
+# CORS test
+GET     /cors/call_api_simple       controllers.CORS.callAPISimple
+GET     /cors/call_api_preflight    controllers.CORS.callAPIPreflight
+GET     /cors/call_api_credentials  controllers.CORS.callAPICredentials
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -10,10 +10,10 @@ class RequestHandler @Inject()(router: Router) extends HttpRequestHandler {
     if (!request.path.startsWith("/assets") && request.path != "/favicon.ico") {
       play.Logger.info(request.toString())
       request.queryString.toSeq.sortBy(_._1).foreach {
-        case (k, v) => play.Logger.info(s"query: $k -> $v")
+        case (k, v) => play.Logger.info(s"query: $k -> ${v.mkString("[", ",", "]")}")
       }
       request.headers.toMap.toSeq.sortBy(_._1).foreach {
-        case (k, v) => play.Logger.info(s"header: $k -> $v")
+        case (k, v) => play.Logger.info(s"header: $k -> ${v.mkString("[", ",", "]")}")
       }
     }
     router.routes.lift(request) match {

@@ -32,12 +32,12 @@
         }
 
         function getUser() {
-            request("GET", "http://api.mofu.poyo/cors_users/334", function (xhr) {
+            request("GET", "http://other.mofu.poyo/cors_users/334", function (xhr) {
                 xhr.send(null);
             });
         }
         function postUser() {
-            request("POST", "http://api.mofu.poyo/cors_users", function (xhr) {
+            request("POST", "http://other.mofu.poyo/cors_users", function (xhr) {
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send("name=shinzan");
             });

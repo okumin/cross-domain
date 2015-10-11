@@ -14,7 +14,7 @@
 
 ### 禁止されること
 
-* 生成元 A から iframe により埋め込まれた生成元 B の要素に JavaScript でアクセスする
+* 生成元 A から iframe により埋め込まれた生成元 B の要素に JavaScript でアクセスすること
 * 生成元 A から生成元 B の文書を Ajax で呼び出すこと
 
 ### 禁止されないこと
@@ -100,7 +100,7 @@
 ```
 
 同一生成元である [http://foo.mofu.poyo/sop/call_api](http://foo.mofu.poyo/sop/call_api) からこのページにアクセスすると、XMLHttpRequest により API を呼び出すことができる。  
-同一生成元でない [http://other.mofu.poyo/sop/call_api](http://other.mofu.poyo/sop/call_api) からこのページにアクセスすると、XMLHttpRequest による呼び出しがブロックされる。
+同一生成元でない [http://other.mofu.poyo/sop/call_api](http://other.mofu.poyo/sop/call_api) からこのページにアクセスすると、XMLHttpRequest により呼び出した API のレスポンスを受け取ることができない。
 
 ## 参考文献
 

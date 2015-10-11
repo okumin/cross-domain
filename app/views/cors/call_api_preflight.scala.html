@@ -32,13 +32,13 @@
         }
 
         function putUser() {
-            request("PUT", "http://api.mofu.poyo/cors_users/1000", function (xhr) {
+            request("PUT", "http://other.mofu.poyo/cors_users/1000", function (xhr) {
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send("name=mofutan");
             });
         }
         function postUser() {
-            request("POST", "http://api.mofu.poyo/cors_users", function (xhr) {
+            request("POST", "http://other.mofu.poyo/cors_users", function (xhr) {
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
                 xhr.send("name=shinzan");

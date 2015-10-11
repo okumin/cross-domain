@@ -12,8 +12,8 @@ XMLHttpRequest Level2 が実装されているブラウザ上で動作する。
 
 ### シンプルなリクエスト(GET, POST)
 
-CORS に対応した Json API を「api.mofu.poyo」に用意する。  
-この API は Origin ヘッダが「http://foo.mofu.poyo」の場合にクロスリクエストを許可する。  
+CORS に対応した Json API を「other.mofu.poyo」に用意する。  
+この API は Origin ヘッダが「 http://foo.mofu.poyo 」の場合にクロスリクエストを許可する。  
 
 GET API と POST API を呼び出すページを用意する。
 
@@ -51,12 +51,12 @@ GET API と POST API を呼び出すページを用意する。
         }
 
         function getUser() {
-            request("GET", "http://api.mofu.poyo/cors_users/334", function (xhr) {
+            request("GET", "http://other.mofu.poyo/cors_users/334", function (xhr) {
                 xhr.send(null);
             });
         }
         function postUser() {
-            request("POST", "http://api.mofu.poyo/cors_users", function (xhr) {
+            request("POST", "http://other.mofu.poyo/cors_users", function (xhr) {
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send("name=shinzan");
             });
@@ -76,7 +76,7 @@ GET API と POST API を呼び出すページを用意する。
 [info] - application - header: Accept-Encoding -> [gzip, deflate, sdch]
 [info] - application - header: Accept-Language -> [ja,en-US;q=0.8,en;q=0.6]
 [info] - application - header: Connection -> [keep-alive]
-[info] - application - header: Host -> [api.mofu.poyo]
+[info] - application - header: Host -> [other.mofu.poyo]
 [info] - application - header: Origin -> [http://foo.mofu.poyo]
 [info] - application - header: Referer -> [http://foo.mofu.poyo/cors/call_api_simple]
 [info] - application - header: User-Agent -> [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36]
@@ -87,7 +87,7 @@ GET API と POST API を呼び出すページを用意する。
 [info] - application - header: Connection -> [keep-alive]
 [info] - application - header: Content-Length -> [12]
 [info] - application - header: Content-Type -> [application/x-www-form-urlencoded]
-[info] - application - header: Host -> [api.mofu.poyo]
+[info] - application - header: Host -> [other.mofu.poyo]
 [info] - application - header: Origin -> [http://foo.mofu.poyo]
 [info] - application - header: Referer -> [http://foo.mofu.poyo/cors/call_api_simple]
 [info] - application - header: User-Agent -> [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36]
@@ -95,8 +95,8 @@ GET API と POST API を呼び出すページを用意する。
 
 ### プリフライトリクエスト(PUT, POST with カスタムヘッダ)
 
-CORS に対応した Json API を「api.mofu.poyo」に用意する。  
-この API は Origin ヘッダが「http://foo.mofu.poyo」の場合にクロスリクエストを許可する。  
+CORS に対応した Json API を「other.mofu.poyo」に用意する。  
+この API は Origin ヘッダが「 http://foo.mofu.poyo 」の場合にクロスリクエストを許可する。  
 
 以下のページを [http://foo.mofu.poyo/cors/call_api_preflight](http://foo.mofu.poyo/cors/call_api_preflight) に用意する。
 
@@ -134,13 +134,13 @@ CORS に対応した Json API を「api.mofu.poyo」に用意する。
         }
 
         function putUser() {
-            request("PUT", "http://api.mofu.poyo/cors_users/1000", function (xhr) {
+            request("PUT", "http://other.mofu.poyo/cors_users/1000", function (xhr) {
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send("name=mofutan");
             });
         }
         function postUser() {
-            request("POST", "http://api.mofu.poyo/cors_users", function (xhr) {
+            request("POST", "http://other.mofu.poyo/cors_users", function (xhr) {
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
                 xhr.send("name=shinzan");
@@ -163,7 +163,7 @@ PUT リクエストの際のログ。
 [info] - application - header: Access-Control-Request-Headers -> [content-type]
 [info] - application - header: Access-Control-Request-Method -> [PUT]
 [info] - application - header: Connection -> [keep-alive]
-[info] - application - header: Host -> [api.mofu.poyo]
+[info] - application - header: Host -> [other.mofu.poyo]
 [info] - application - header: Origin -> [http://foo.mofu.poyo]
 [info] - application - header: Referer -> [http://foo.mofu.poyo/cors/call_api_preflight]
 [info] - application - header: User-Agent -> [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36]
@@ -174,7 +174,7 @@ PUT リクエストの際のログ。
 [info] - application - header: Connection -> [keep-alive]
 [info] - application - header: Content-Length -> [12]
 [info] - application - header: Content-Type -> [application/x-www-form-urlencoded]
-[info] - application - header: Host -> [api.mofu.poyo]
+[info] - application - header: Host -> [other.mofu.poyo]
 [info] - application - header: Origin -> [http://foo.mofu.poyo]
 [info] - application - header: Referer -> [http://foo.mofu.poyo/cors/call_api_preflight]
 [info] - application - header: User-Agent -> [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36]
@@ -190,7 +190,7 @@ POST リクエストの際のログ。
 [info] - application - header: Access-Control-Request-Headers -> [content-type, x-requested-with]
 [info] - application - header: Access-Control-Request-Method -> [POST]
 [info] - application - header: Connection -> [keep-alive]
-[info] - application - header: Host -> [api.mofu.poyo]
+[info] - application - header: Host -> [other.mofu.poyo]
 [info] - application - header: Origin -> [http://foo.mofu.poyo]
 [info] - application - header: Referer -> [http://foo.mofu.poyo/cors/call_api_preflight]
 [info] - application - header: User-Agent -> [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36]
@@ -201,7 +201,7 @@ POST リクエストの際のログ。
 [info] - application - header: Connection -> [keep-alive]
 [info] - application - header: Content-Length -> [12]
 [info] - application - header: Content-Type -> [application/x-www-form-urlencoded]
-[info] - application - header: Host -> [api.mofu.poyo]
+[info] - application - header: Host -> [other.mofu.poyo]
 [info] - application - header: Origin -> [http://foo.mofu.poyo]
 [info] - application - header: Referer -> [http://foo.mofu.poyo/cors/call_api_preflight]
 [info] - application - header: User-Agent -> [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36]
@@ -210,7 +210,7 @@ POST リクエストの際のログ。
 
 ### クレデンシャルを含むリクエスト
 
-CORS に対応した Json API を「api.mofu.poyo」に用意する。  
+CORS に対応した Json API を「other.mofu.poyo」に用意する。  
 この API は Origin ヘッダが「http://foo.mofu.poyo」の場合にクロスリクエストを許可する。  
 またこの API は [Access-Control-Allow-Credentials](https://developer.mozilla.org/ja/docs/HTTP_access_control#Access-Control-Allow-Credentials) ヘッダを true で返す。  
 
@@ -251,12 +251,12 @@ CORS に対応した Json API を「api.mofu.poyo」に用意する。
         }
 
         function getUser() {
-            request("GET", "http://api.mofu.poyo/cors_users/334", function (xhr) {
+            request("GET", "http://other.mofu.poyo/cors_users/334", function (xhr) {
                 xhr.send(null);
             });
         }
         function getUserWithCredentials() {
-            request("GET", "http://api.mofu.poyo/cors_users/334", function (xhr) {
+            request("GET", "http://other.mofu.poyo/cors_users/334", function (xhr) {
                 xhr.withCredentials = true;
                 xhr.send(null);
             });
@@ -275,7 +275,7 @@ CORS に対応した Json API を「api.mofu.poyo」に用意する。
 [info] - application - header: Accept-Encoding -> [gzip, deflate, sdch]
 [info] - application - header: Accept-Language -> [ja,en-US;q=0.8,en;q=0.6]
 [info] - application - header: Connection -> [keep-alive]
-[info] - application - header: Host -> [api.mofu.poyo]
+[info] - application - header: Host -> [other.mofu.poyo]
 [info] - application - header: Origin -> [http://foo.mofu.poyo]
 [info] - application - header: Referer -> [http://foo.mofu.poyo/cors/call_api_credentials]
 [info] - application - header: User-Agent -> [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36]
@@ -290,7 +290,7 @@ CORS に対応した Json API を「api.mofu.poyo」に用意する。
 [info] - application - header: Accept-Language -> [ja,en-US;q=0.8,en;q=0.6]
 [info] - application - header: Connection -> [keep-alive]
 [info] - application - header: Cookie -> [session=1a1a1a]
-[info] - application - header: Host -> [api.mofu.poyo]
+[info] - application - header: Host -> [other.mofu.poyo]
 [info] - application - header: Origin -> [http://foo.mofu.poyo]
 [info] - application - header: Referer -> [http://foo.mofu.poyo/cors/call_api_credentials]
 [info] - application - header: User-Agent -> [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36]

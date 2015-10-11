@@ -1,0 +1,27 @@
+@()
+@main("inner") {
+    <div id="inner">実際はこの iframe は見えないようにします</div>
+    <script>
+        window.addEventListener(
+            "message",
+            function (e) {
+                console.log(e);
+                if (e.origin == "http://foo.mofu.poyo") {
+                    var id = e.data;
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://other.mofu.poyo/users/" + id);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            e.source.postMessage(xhr.responseText, "http://foo.mofu.poyo");
+                        }
+                    };
+                    xhr.send(null);
+                } else {
+                    alert("Message from " + e.origin + " to the inner window.");
+                }
+            },
+            false
+        );
+    </script>
+}

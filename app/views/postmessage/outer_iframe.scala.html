@@ -1,0 +1,21 @@
+@()
+@main("iframe") {
+    <div>
+        <iframe src="http://other.mofu.poyo/postmessage/inner" frameborder="1" width="600" height="150" id="frame"></iframe>
+    </div>
+    <div id="out"></div>
+    <script>
+        window.addEventListener(
+            "message",
+            function(e) {
+                console.log(e);
+                if (e.origin == "http://other.mofu.poyo") {
+                    document.getElementById("out").innerText = e.data;
+                } else {
+                    alert("Message from " + e.origin);
+                }
+            },
+            false
+        );
+    </script>
+}

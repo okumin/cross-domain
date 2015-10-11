@@ -1,0 +1,13 @@
+@()
+@main("inner") {
+    <div id="inner">Hello world!</div>
+    <div><input type="button" value="Post to *" onclick="post('*')"></div>
+    <div><input type="button" value="Post to foo.mofu.poyo" onclick="post('http://foo.mofu.poyo')"></div>
+    <div><input type="button" value="Post to other.mofu.poyo" onclick="post('http://other.mofu.poyo')"></div>
+    <script>
+        function post(targetOrigin) {
+            var message = document.getElementById("inner").innerText + " to " + targetOrigin;
+            parent.postMessage(message, targetOrigin);
+        }
+    </script>
+}

@@ -19,6 +19,12 @@ GET     /domain/outer_ng            controllers.Domain.outerNG
 GET     /domain/inner               controllers.Domain.inner
 GET     /domain/call_api            controllers.Domain.callAPI
 
+# PostMessage test
+GET     /postmessage/outer          controllers.PostMessage.outer
+GET     /postmessage/inner          controllers.PostMessage.inner
+GET     /postmessage/call_api       controllers.PostMessage.callAPI
+GET     /postmessage/inner_call_api controllers.PostMessage.innerCallAPI
+
 # JSONP test
 GET     /jsonp/call_api             controllers.JSONP.callAPI
 

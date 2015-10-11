@@ -7,6 +7,10 @@ class Domain extends Controller {
     Ok(views.html.domain.outer_iframe())
   }
 
+  def outerNG = Action {
+    Ok(views.html.domain.outer_iframe_ng())
+  }
+
   def inner = Action {
     Ok(views.html.domain.inner())
   }

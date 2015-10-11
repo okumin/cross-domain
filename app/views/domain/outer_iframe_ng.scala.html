@@ -1,0 +1,19 @@
+@()
+@main("iframe with domain overwriting") {
+    <div>
+        <iframe src="http://mofu.poyo/inner" frameborder="1" width="600" height="100" id="frame"></iframe>
+    </div>
+    <input type="button" onclick="peek()" value="Click">
+    <span id="out"></span>
+    <script>
+        document.domain = "mofu.poyo";
+        function peek() {
+            try {
+                var inner = document.getElementById("frame").contentWindow.document.getElementById("inner");
+                document.getElementById("out").innerText = inner.innerText;
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+    </script>
+}

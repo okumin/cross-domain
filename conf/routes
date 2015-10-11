@@ -15,6 +15,7 @@ GET     /sop/call_api               controllers.SOP.callAPI
 
 # Domain overwriting test
 GET     /domain/outer               controllers.Domain.outer
+GET     /domain/outer_ng            controllers.Domain.outerNG
 GET     /domain/inner               controllers.Domain.inner
 GET     /domain/call_api            controllers.Domain.callAPI
 

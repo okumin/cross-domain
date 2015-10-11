@@ -1,0 +1,22 @@
+@()
+@main("Call API by JSONP") {
+    <div>
+        <p>ID  : <span id="user_id"></span></p>
+        <p>Name: <span id="user_name"></span></p>
+    </div>
+    <input type="button" onclick="call()" value="Click">
+    <script>
+        function call() {
+            var script = document.createElement("script");
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("src", "http://foo.mofu.poyo/users/334?callback=show");
+            document.body.appendChild(script);
+        }
+
+        function show(user) {
+            console.log(user);
+            document.getElementById("user_id").innerText = user.id;
+            document.getElementById("user_name").innerText = user.name;
+        }
+    </script>
+}

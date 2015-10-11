@@ -7,17 +7,27 @@
     <input type="button" onclick="call()" value="Click">
     <script>
         function call() {
-            try {
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", "http://foo.mofu.poyo/users/334", false);
-                xhr.send(null);
-                var user = JSON.parse(xhr.responseText);
-                console.log(user);
-                document.getElementById("user_id").innerText = user.id;
-                document.getElementById("user_name").innerText = user.name;
-            } catch (e) {
-                alert(e.message);
-            }
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://foo.mofu.poyo/users/334");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    try {
+                        var user = JSON.parse(xhr.responseText);
+                        console.log(user);
+                        document.getElementById("user_id").innerText = user.id;
+                        document.getElementById("user_name").innerText = user.name;
+                    } catch (e) {
+                        console.log(e);
+                        alert(e.message);
+                    }
+                }
+            };
+            xhr.onerror = function (e) {
+                console.error(e);
+                console.error(xhr);
+                alert("Error!");
+            };
+            xhr.send(null);
         }
     </script>
 }

@@ -8,6 +8,29 @@ XMLHttpRequest Level2 が実装されているブラウザ上で動作する。
 
 仕様の詳細は [HTTP access control (CORS)](https://developer.mozilla.org/ja/docs/HTTP_access_control) に詳しい。
 
+### 仕様まとめ
+
+* XMLHttpRequest Level2 環境でクロスオリジンなリクエストがなされると、リクエストヘッダ「Origin」にアクセス元のオリジンが書き込まれる
+* 条件を満たすとプリフライトリクエストなしの[シンプルなリクエスト](https://developer.mozilla.org/ja/docs/HTTP_access_control#Simple_requests)が実行される
+* シンプルなリクエストの条件を満たさない場合、本命のリクエストに先んじて[プリフライトリクエスト](https://developer.mozilla.org/ja/docs/HTTP_access_control#Preflighted_requests)が実行される
+* 許可するオリジン、許可するメソッド、許可するカスタムヘッダはサーバ側が判断する
+* Cookie はデフォルトで送信されない。クライアント・サーバ両方で明示的に有効にする必要がある
+
+### 利用可能な環境
+
+モダンブラウザのみ利用可能。
+
+### セキュリティに関する問題
+
+* 意図せぬホストからのアクセス
+    * 例えば `Access-Control-Allow-Origin` に `*` を指定したりするとあらゆるドメインからアクセスできるようになる
+    * 基本的にホワイトリストを用意したほうがよいと思う
+* CSRF が発生しうる
+    * 許可しない Origin からのアクセスであっても、リクエストそのものはサーバに送信される
+        * 適切なレスポンスヘッダを返さない場合、JavaScript がレスポンスの中身を読み取ることができない、というのが XMLHttpRequest Level2 の制約
+        * 例で示すように、POST メソッドであっても条件を満たせばプリフライトリクエストなしで実行される
+    * 許可しない Origin からのアクセスは弾いてしまい、処理本体が実行されないようにするのが安全
+
 ## 例
 
 ### シンプルなリクエスト(GET, POST)

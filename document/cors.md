@@ -13,6 +13,7 @@ XMLHttpRequest Level2 が実装されているブラウザ上で動作する。
 * XMLHttpRequest Level2 環境でクロスオリジンなリクエストがなされると、リクエストヘッダ「Origin」にアクセス元のオリジンが書き込まれる
 * 条件を満たすとプリフライトリクエストなしの[シンプルなリクエスト](https://developer.mozilla.org/ja/docs/HTTP_access_control#Simple_requests)が実行される
 * シンプルなリクエストの条件を満たさない場合、本命のリクエストに先んじて[プリフライトリクエスト](https://developer.mozilla.org/ja/docs/HTTP_access_control#Preflighted_requests)が実行される
+    * これがないと旧環境に合わせて作られたサーバで CSRF が成立してしまうと思われる
 * 許可するオリジン、許可するメソッド、許可するカスタムヘッダはサーバ側が判断する
 * Cookie はデフォルトで送信されない。クライアント・サーバ両方で明示的に有効にする必要がある
 
